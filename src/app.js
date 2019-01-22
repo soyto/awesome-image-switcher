@@ -31,8 +31,8 @@ let slides = [
   },
   {
     'image': 'https://images.unsplash.com/photo-1548004000-5161ed59c0a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    'effectPlugin': new GhostEffectPlugin(5000),
-    'splitStrategy': new SplitStrategy(SplitStrategy.strategies.colsAndRows, 2, 4),
+    'effectPlugin': new AccordionEffectPlugin(),
+    'splitStrategy': new SplitStrategy(SplitStrategy.strategies.widthAndHeight, 100, 100),
   },
   {
     'image': 'https://images.unsplash.com/photo-1547997406-e915ef666ac7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
