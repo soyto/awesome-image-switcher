@@ -1,0 +1,50 @@
+h1 {
+  color: white;
+  font-size: 4em;
+  text-shadow: 2px 2px #000;
+}
+.is-bg-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  overflow: hidden;
+
+  >.is-bg-item {
+    position: absolute;
+    background-repeat: no-repeat;
+
+
+    &.twilight {
+      transition: transform 1s ease-in, opacity .5s ease-in;
+
+      &.animate {
+        opacity: 0;
+      }
+    }
+
+    &.accordion {
+      transition: transform .5s ease-in, opacity 1s ease-out;
+      transform-origin: -50% -50%;
+
+      &.animate {
+        transform: rotateX(90deg);
+        opacity: 0;
+      }
+    }
+
+    &.ghost {
+      transition:  transform 1s ease-in, opacity .75s ease-in;
+
+      &.animate {
+        opacity: 0;
+      }
+    }
+  }
+}
