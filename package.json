@@ -2,14 +2,23 @@
   "name": "awesome-image-switcher",
   "version": "1.0.1",
   "description": "awesome-image-switcher",
+  "main": "dist/awesome-image-switcher.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --port 8080 --hot --host 0.0.0.0"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vicente Manuel Aleixos Bellido",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soyto/awesome-image-switcher"
+  },
+  "homepage": "https://github.com/soyto/awesome-image-switcher",
   "dependencies": {
     "extend": "^3.0.2",
     "format-unicorn": "^1.1.1",
