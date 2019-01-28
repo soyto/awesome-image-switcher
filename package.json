@@ -1,6 +1,6 @@
 {
   "name": "awesome-image-switcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "awesome-image-switcher",
   "scripts": {
     "build": "webpack --mode production",
