@@ -1,8 +1,7 @@
 {
-  "name": "awsome-image-switcher",
+  "name": "awesome-image-switcher",
   "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "description": "awesome-image-switcher",
   "scripts": {
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",

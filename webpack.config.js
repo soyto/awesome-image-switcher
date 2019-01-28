@@ -4,19 +4,21 @@
   const CleanWebpackPlugin = require('clean-webpack-plugin');
   const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-  module.exports = (env, argv) => ({
-    'mode': argv.mode,
-    'entry': path.resolve('src', 'app.js'),
-    'output': {
-      'filename': 'app.js',
-      'path': path.resolve('dist')
-    },
-    'devServer': {
-      'contentBase': path.resolve('dist'),
-      'open': false
-    },
-    'plugins': [
-        new CleanWebpackPlugin(['dist']),
+
+  let developmentExport = function(env, argv) {
+    return {
+      'mode': argv.mode,
+      'entry': path.resolve('src', 'app.js'),
+      'output': {
+        'filename': 'app.js',
+        'path': path.resolve('www')
+      },
+      'devServer': {
+        'contentBase': path.resolve('www'),
+        'open': false
+      },
+      'plugins': [
+        new CleanWebpackPlugin(['www']),
         new HtmlWebpackPlugin({
           'template': path.resolve('src', 'www', 'index.html'),
           'minify': true,
@@ -27,18 +29,52 @@
           'filename': argv.mode !== 'production' ? '[name].css' : '[name].[hash].css',
           'chunkFilename': argv.mode !== 'production' ? '[id].css' : '[id].[hash].css',
         })
+      ],
+      'module': {
+        'rules': [
+          {
+            'test': /\.scss$/,
+            'use': [
+              argv.mode !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+              'css-loader',
+              'sass-loader'
+            ]
+          }
+        ]
+      }
+    }
+  };
+
+  let libraryExport = {
+    'mode': 'production',
+    'entry': path.resolve('src', 'library.js'),
+    'output': {
+      'filename': 'awesome-image-switcher.js',
+      'path': path.resolve('dist'),
+      'library': 'awesome-image-switcher.js',
+      'libraryTarget': 'umd',
+      'umdNamedDefine': true
+    },
+    'plugins': [
+      new CleanWebpackPlugin(['dist']),
+      new MiniCssExtractPlugin({
+        'filename': 'awesome-image-switcher.min.css',
+        'chunkFilename': '[id].awesome-image-switcher.css',
+      })
     ],
     'module': {
       'rules': [
         {
           'test': /\.scss$/,
           'use': [
-            argv.mode !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+            MiniCssExtractPlugin.loader,
             'css-loader',
             'sass-loader'
           ]
         }
       ]
     }
-  });
+  };
+
+  module.exports = [developmentExport, libraryExport];
 }());
